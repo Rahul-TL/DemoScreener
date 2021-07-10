@@ -1,10 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Header from './Components/header/header';
+import TabsC from './Components/Tabs';
+import Intro
+ from './Components/Intro';
 function App() {
   return (
     <div className="App">
-      hello
+      <Header/>
+      <TabsC/>
+      <Intro/>
     </div>
   );
 }
