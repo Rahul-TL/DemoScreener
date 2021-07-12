@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import StockTables from "./components/StockTables";
+import ProfitLossCards from "./components/ProfiltLossCards";
 
 function App() {
   return (
     <div className="App">
-      hello world
+      <StockTables />
     </div>
   );
 }
