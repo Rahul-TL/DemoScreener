@@ -1,8 +1,7 @@
 import './App.css';
-import Header from './Components/header/header';
-import TabsC from './Components/Tabs';
-import Intro
- from './Components/Intro';
+import Header from './components/header/header';
+import TabsC from './components/Tabs';
+import Intro from './components/Intro';
 function App() {
   return (
     <div className="App">
