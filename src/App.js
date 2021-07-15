@@ -1,10 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
-import StockTables from "./components/StockTables";
-import ProfitLossCards from "./components/ProfiltLossCards";
-import Header from './components/header/header';
-import TabsC from './components/Tabs';
-import Intro from './components/Intro';
+import StockTables from "./Components/StockTables";
+import ProfitLossCards from "./Components/ProfiltLossCards";
+import Header from './Components/header/header';
+import TabsC from './Components/Tabs';
+import Intro from './Components/Intro';
 
 function App() {
   return (
