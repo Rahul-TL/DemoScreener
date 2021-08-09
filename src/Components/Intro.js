@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import firebase from '../firebase';
 import styled from 'styled-components'
 import GetAppOutlinedIcon from '@material-ui/icons/GetAppOutlined';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
@@ -77,11 +78,31 @@ const Card = styled.div`
 
 
 function Intro() {
+  const[cpmpany,setCompany] = useState([]);
+  const[loading, setLoading] = useState(false);
+
+  const ref = firebase.firestore().collection("Companies");
+
+  function getCompany(){
+    setLoading(true);
+    ref.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setCompany(items);
+      setLoading(true);
+    });
+  }
+
+  useEffect(() =>{
+    getCompany();
+  }, [])
   return (
     <Box>
       <Button><AddOutlinedIcon/>FOLLOW</Button>
       <Button><GetAppOutlinedIcon/>EXPORT TO EXCEL</Button>
-      <Head>Reliance Industries Ltd</Head>
+      <Head id="name">Reliance Industries Ltd</Head>
       <Subtiles icolor="blue"><LinkIcon/>ril.com</Subtiles>
       <LaunchIcon style={{ color: indigo[400] }}/><Subtiles icolor="grey">BSE: 500325</Subtiles>
       <LaunchIcon style={{ color: indigo[400] }}/><Subtiles icolor="grey">NSE: Reliance</Subtiles>

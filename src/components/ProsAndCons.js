@@ -13,7 +13,7 @@ export default function ProsAndCons() {
     return (
       <Card variant="outlined" className={classes.card}>
         <div className={`${classes.eachBox} ${classes.pros}`}>
-          <h1 className={classes.heading}>PROS</h1>
+          <h1 className={classes.heading}  id="analysis">PROS</h1>
           <ul className={classes.list}>
             {pros.map((each) => {
               return <li className={classes.listItem}>{each}</li>;

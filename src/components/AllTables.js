@@ -123,6 +123,7 @@ const AllTables = () => {
   return (
     <div>
       <CommonContainer
+        id="peers"
         title="Peer Comparison"
         Headings={HEADINGS}
         data={DUMMY_DATA}
