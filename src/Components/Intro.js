@@ -78,26 +78,29 @@ const Card = styled.div`
 
 
 function Intro() {
-  const[cpmpany,setCompany] = useState([]);
+  const[company,setCompany] = useState([]);
   const[loading, setLoading] = useState(false);
 
-  const ref = firebase.firestore().collection("Companies");
+  const docRef = firebase.firestore().collection("Companies").doc("RELIANCE");
+  console.log(docRef);
+
 
   function getCompany(){
     setLoading(true);
-    ref.onSnapshot((querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push(doc.data());
-      });
-      setCompany(items);
-      setLoading(true);
-    });
+    docRef.get().then((docs) => {
+      const item = docs.data();
+      console.log(item);
+      setCompany(item);
+      setLoading(false);
+    }).catch((error) =>{
+      console.log("Some Error occured while fetching the same: ", error);
+    })
   }
 
   useEffect(() =>{
     getCompany();
   }, [])
+  
   return (
     <Box>
       <Button><AddOutlinedIcon/>FOLLOW</Button>
@@ -131,7 +134,11 @@ function Intro() {
 
       <Card iwidth="30%">
           <Heading>ABOUT</Heading>
-          <Info>Reliance Industries Limited is a Fortune 500 company and the largest private sector corporation in india</Info>
+          {/* <Info>Reliance Industries Limited is a Fortune 500 company and the largest private sector corporation in india</Info> */}
+          {company.map((comp) =>{
+            <div  key={comp.ticker}>
+          <Info >{comp.about}</Info></div>
+          })}
           <br/>
           <Heading>KEY POINTS</Heading>
           <Info>Reliance Industries Limited is a Fortune 500 company and the largest private sector corporation in india</Info>
